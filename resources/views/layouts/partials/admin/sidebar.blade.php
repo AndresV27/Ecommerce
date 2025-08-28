@@ -5,7 +5,15 @@
             'name' => 'Dashboard',
             'route' => route('admin.dashboard'),
             'active' => request()->routeIs('admin.dashboard')
-        ]
+        ],
+        [
+            //Famila de productos
+            'name'=> 'Familias',
+            'icon'=> 'fa-solid fa-box-open',
+            'route'=> route('admin.families.index'),
+            'active'=> request()->routeIs('admin.families.*'),
+        ],
+      
     ];
 @endphp
 
