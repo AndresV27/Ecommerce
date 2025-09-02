@@ -11,9 +11,9 @@
     
 
     <x-slot name="action">
-        <button class="btn btn-blue">
+        <a class="btn btn-gray" href="{{route('admin.families.create')}}">
             Nuevo
-        </button>
+        </a>
     </x-slot>   
     @if ($families->count())
 
