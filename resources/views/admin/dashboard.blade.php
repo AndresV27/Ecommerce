@@ -6,7 +6,7 @@
 ]">
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="bg-white rounded-lg shadow-lg p-8  dark:bg-gray-800 dark:text-gray-300">
                 <div class="flex items-center">
                        <img class="size-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
 
@@ -26,7 +26,7 @@
 
         </div>
 
-          <div class="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center">
+          <div class="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center dark:bg-gray-800 dark:text-gray-300">
                 <h2 class="text-xl font-semibold ">
                     CodeCommerce
                 </h2>

@@ -14,7 +14,7 @@ class FamilyController extends Controller
     public function index()
     {
         $families = Family::orderBy('id','desc')
-        ->paginate();
+        ->paginate(10);
         return view('admin.families.index', compact('families'));
     }
 
@@ -37,6 +37,12 @@ class FamilyController extends Controller
             'name' => 'required'
         ]);
         Family::create($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien Hecho!',
+            'text' => 'Familia creada correctamente.'
+        ]);
         return redirect()->route('admin.families.index');
     }
 
@@ -65,6 +71,12 @@ class FamilyController extends Controller
             'name' => 'required'
         ]);
          $family->update($request->all());
+
+         session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien Hecho!',
+            'text' => 'Familia actualizada correctamente.'
+        ]);
         return redirect()->route('admin.families.index');
     }
 
@@ -73,7 +85,22 @@ class FamilyController extends Controller
      */
     public function destroy(Family $family)
     {
+        if ($family->categories->count() > 0) {
+                session()->flash('swal', [
+                'icon' => 'error',
+                'title' => '¡Ups!',
+                'text' => 'No se puede eliminar la familia ya que cuenta con categorías asociadas.'
+            ]);
+           
+            return redirect()->route('admin.families.edit',$family);
+        }
         $family->delete();
+
+            session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien Hecho!',
+            'text' => 'Familia eliminada correctamente.'
+        ]);
         
         return redirect()->route('admin.families.index');
     }
