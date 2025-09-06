@@ -24,7 +24,7 @@
 
                 <x-select name="family_id" class="w-full">
                     @foreach ($families as $family)
-                        <option value="{{$family->id}}" >
+                        <option value="{{$family->id}}" @selected(old('family_id') == $family->id)>
                             {{$family->name}}
                         </option>
                     @endforeach
@@ -34,7 +34,7 @@
                 <x-label class="mb-2">
                     Nombre
                 </x-label>
-                <x-input class="w-full" placeholder="Ingrese el nombre de la familia" name="name"
+                <x-input class="w-full" placeholder="Ingrese el nombre de la categoria" name="name"
                     value="{{ old('name') }}" />
             </div>
 
