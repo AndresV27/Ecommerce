@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(),
             'image_path',
             'price',
-            'subcategory_id',
+            'subcategory_id' ,
         ];
     }
 }
