@@ -25,8 +25,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.subcategories.create',compact('categories'));
+        return view('admin.subcategories.create');
     }
 
     /**
@@ -64,7 +63,8 @@ class SubCategoryController extends Controller
      */
     public function edit(Subcategory $subcategory)
     {
-        //
+        $category = Category::all();
+        return view('admin.subcategories.edit',compact('subcategory','category'));
     }
 
     /**
@@ -80,6 +80,24 @@ class SubCategoryController extends Controller
      */
     public function destroy(Subcategory $subcategory)
     {
-        //
+           if ($subcategory->product->count()>0) {
+                session()->flash('swal', [
+                'icon' => 'error',
+                'title' => '¡Ups!',
+                'text' => 'No se puede eliminar la subcategoría ya que cuenta con productos asociados.'
+            ]);
+           
+            return redirect()->route('admin.subcategories.edit',$subcategory);
+        }
+        $subcategory->delete();
+
+            session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien Hecho!',
+            'text' => 'Subcategoría eliminada correctamente.'
+        ]);
+        
+        return redirect()->route('admin.subcategories.index');
+    
     }
 }

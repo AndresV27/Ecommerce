@@ -75,6 +75,12 @@
         
     @endif
 
+    <script>
+        Livewire.on('swal', params =>{
+            Swal.fire(data[0]);
+        })
+    </script>
+
    
 </body>
 
