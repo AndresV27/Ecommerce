@@ -43,7 +43,7 @@
     @include('layouts.partials.admin.navegation')
     @include('layouts.partials.admin.sidebar')
 
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64  ">
         <div class="mt-14">
             <div class="flex justify-between items-center">
                 @include('layouts.partials.admin.breadcrumb')

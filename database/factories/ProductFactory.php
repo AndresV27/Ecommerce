@@ -18,11 +18,21 @@ class ProductFactory extends Factory
     {
         return [
             'sku'=> $this->faker->unique()->numberBetween(100000, 999999),
-            'name' =>$this->faker->words(3),
-            'description' => $this->faker->text(),
-            'image_path',
-            'price',
-            'subcategory_id' ,
+            'name' =>$this->faker->sentence(2),
+            'description' => $this->faker->text(200),
+            // 'image_path'=> 'products/' . $this->faker->imageUrl('public/storage/products', 640, 480, null, false),
+            // 'image_path'=> 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' . $this->faker->numberBetween(1,999).'.png',
+             'image_path' => 'products/' . basename(
+                $this->faker->image(
+                    storage_path('app/public/products'), 
+                    640, 
+                    480, 
+                    null, 
+                    false 
+                )
+            ),
+            'price'=> $this->faker->randomFloat(2,1,1000),
+            'subcategory_id' =>$this->faker->numberBetween(1,632),
         ];
     }
 }
