@@ -86,7 +86,9 @@ class ProductCreate extends Component
     ], [], [
       'product.sku' => 'código',
       'subcategory.category_id' => 'categoría',
-      'subcategory.name' => 'nombre',
+      'product.name' => 'nombre',
+      'product.price' => 'precio',
+      'product.subcategory_id' => 'subcategoría',
     ]);
     $this->product['image_path'] = $this->image->store('products');
 
@@ -98,7 +100,7 @@ class ProductCreate extends Component
       'text' => 'Producto creado correctamente.'
     ]);
 
-    return redirect()->route('admin.products.edit', $product);
+    return redirect()->route('admin.products.index');
   }
 
   public function render()
